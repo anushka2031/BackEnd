@@ -33,26 +33,27 @@ const Upload = () => {
       if (error) throw error;
 
       // 2️⃣ Get public URL
-      const imageUrl = `${supabaseUrl}/storage/v1/object/public/insta/insta_images/${Img.name}`;
-      console.log("Image URL:", imageUrl);
+      const imgUrl = `${supabaseUrl}/storage/v1/object/public/insta/insta_images/${Img.name}`;
+    8
 
       // 3️⃣ Send metadata to backend
-     await axios.post(
-  "http://localhost:4001/upload",
-  {
-    name: Img.name,
-    ImgUrl: imageUrl,
-    user: localStorage.getItem("userEmail")
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    }
-  }
-);
+//      await axios.post(
+//   "http://localhost:4001/upload",
+//   {
+//     name: Img.name,
+//     ImgUrl: imageUrl,
+//     user: localStorage.getItem("userEmail")
+//   },
+//   {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("token")}`
+//     }
+//   }
+// );
 
 
       alert("✅ Image uploaded and saved successfully!");
+      axios.post("http://loaclhost:4000/upload",{imgUrl})
       setImg(null);
     } catch (err) {
       console.error("❌ Upload failed:", err);
