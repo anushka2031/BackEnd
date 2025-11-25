@@ -1,9 +1,12 @@
 let mongoose = require('mongoose')
 
 let uploadSchema= mongoose.Schema({
+     name: { 
+        type: String, required: true 
+    },
     imgUrl:{
         type:String,
-        // require:true
+        required:true
     },
     likeCount:{
         type:Number,
